@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Epsilon Greedy"""
 
+import numpy as np
+
 
 def epsilon_greedy(Q, state, epsilon):
     """Uses epsilon-greedy to determine the next action:
@@ -12,4 +14,9 @@ def epsilon_greedy(Q, state, epsilon):
     If exploring, pick the next action with numpy.random.randint
         from all possible actions.
     Returns: the next action index."""
+    if np.random.uniform(0, 1) < epsilon:
+        action_index = np.random.randint(Q.shape[1])
+    else:
+        action_index = np.argmax(Q[state, :])
 
+    return action_index
