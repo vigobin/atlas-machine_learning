@@ -1,4 +1,3 @@
-$ cat 3-main.py
 #!/usr/bin/env python3
 
 load_frozen_lake = __import__('0-load_env').load_frozen_lake
