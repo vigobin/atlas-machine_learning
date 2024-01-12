@@ -1,0 +1,2 @@
+model_checkpoint_path: "Breakout-v4_weights.h5f"
+all_model_checkpoint_paths: "Breakout-v4_weights.h5f"
