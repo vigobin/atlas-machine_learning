@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """TD(λ) function"""
 
+import numpy as np
 
-def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99):
+
+def td_lambtha(env, V, policy, lambtha, episodes=5000,
+               max_steps=100, alpha=0.1, gamma=0.99):
     """Performs the TD(λ) algorithm:
         env is the openAI environment instance.
         V is a numpy.ndarray of shape (s,) containing the value estimate.
@@ -14,3 +17,18 @@ def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100, alpha=0.1,
         alpha is the learning rate.
         gamma is the discount rate.
         Returns: V, the updated value estimate."""
+    for _ in range(episodes):
+        state = env.reset()
+        done = False
+        steps = 0
+        eligibility_trace = np.zeros_like(V)
+        while not done and steps < max_steps:
+            action = policy(state)
+            next_state, reward, done, _ = env.step(action)
+            delta = reward + gamma * V[next_state] * (not done) - V[state]
+            eligibility_trace[state] += 1.0
+            V += alpha * delta * eligibility_trace
+            eligibility_trace *= gamma * lambtha
+            state = next_state
+            steps += 1
+    return V
