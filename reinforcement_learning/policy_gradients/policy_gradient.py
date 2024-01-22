@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Simple Policy function"""
+"""Compute the Monte-Carlo policy gradient"""
 
 import numpy as np
 
 
-def policy(matrix, weight):
-    """Function that computes to policy with a weight of a matrix."""
-    weighted_matrix = matrix.dot(weight)
-    input_exp = np.exp(weighted_matrix)
-    policy = input_exp / np.sum(input_exp)
-
-    return policy
+def policy_gradient(state, weight):
+    """ function that computes the Monte-Carlo policy gradient based on a
+            state and a weight matrix.
+        state: matrix representing the current observation of the environment.
+        weight: matrix of random weight.
+        Return: the action and the gradient (in this order)."""
