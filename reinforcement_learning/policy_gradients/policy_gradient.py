@@ -14,7 +14,7 @@ def policy_gradient(state, weight):
     input_exp = np.exp(weighted_matrix)
     softmax_output = input_exp / np.sum(input_exp)
 
-    action = np.argmax(softmax_output)
+    action = np.random.choice(len(softmax_output[0]), p=softmax_output[0])
     dsoftmax = softmax_grad(softmax_output)[action, :]
     dlog = dsoftmax / softmax_output[0, action]
     gradient = state.T.dot(dlog[None, :])
