@@ -13,7 +13,7 @@ def availableShips(passengerCount):
 
     while True:
         response = requests.get(
-            f"https://swapi-api.hbtn.io/api/starships/?page={page}")
+            "https://swapi-api.hbtn.io/api/starships/?page={}".format(page))
         data = response.json()
 
         # Check each ship
