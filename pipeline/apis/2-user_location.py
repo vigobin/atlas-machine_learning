@@ -21,5 +21,6 @@ def get_user_location(url):
         user_data = response.json()
         print(user_data.get('location', "No location found"))
 
+
 if __name__ == '__main__':
     get_user_location(sys.argv[1])
