@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Can I join?"""
+"""Task 0. Can I join?"""
 import requests
 
 
