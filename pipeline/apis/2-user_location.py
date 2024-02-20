@@ -16,7 +16,7 @@ def get_user_location(url):
         reset_time = datetime.fromtimestamp(int(reset_timestamp))
         wait_time = reset_time - datetime.now()
         minutes = divmod(wait_time.total_seconds(), 60)[0]
-        print(f"Reset in {int(minutes)} min")
+        print("Reset in {} min".format(int(minutes)))
     else:
         user_data = response.json()
         print(user_data.get('location', "No location found"))
