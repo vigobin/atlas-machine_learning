@@ -19,7 +19,7 @@ def get_launches_per_rocket():
         launches_per_rocket.items(), key=lambda x: (-x[1], x[0]))
 
     for rocket, launches in sorted_rockets:
-        print(f"{rocket}: {launches}")
+        print("{}: {}".format(rocket, launches))
 
 
 if __name__ == '__main__':
